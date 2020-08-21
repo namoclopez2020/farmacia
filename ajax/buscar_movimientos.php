@@ -59,8 +59,9 @@
 					<th>Cantidad</th>				
 				</tr>
 				<?php
+				$contador = 0;
 				while ($row=$db->fetch_array($query)){
-						$id_movimiento=$row['id_movimiento'];
+						$contador++;
 						$nombre_producto=$row['pname'];
 						$fecha=date("d/m/Y G:i:s", strtotime($row['fecha_movimiento']));
 						$nombre_usuario=$row['uname'];
@@ -68,7 +69,7 @@
 					    $nombre_movimiento=$row['nombre_tipo_movimiento'];
 					?>
 					<tr>
-						<td><?php echo $id_movimiento; ?></td>
+						<td><?php echo $contador; ?></td>
 						<td><?php echo $fecha; ?></td>
 						<td><?php echo $nombre_usuario; ?></td>
 						<td ><?php echo $nombre_movimiento;?></td>	
