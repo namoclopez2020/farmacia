@@ -5,12 +5,10 @@
   // Checkin What level user has permission to view this page
    page_require_level(1);
 $id_producto=$_GET['id'];
-$products=find_all('products');
 $query="Select name from products where id='$id_producto'";
 $data=$db->query($query);
 $nombre_prod=$db->fetch_array($data);
 $nombre_producto=$nombre_prod['name'];
-$all_movimientos=find_all('movimientos');
 $all_tipo_movimiento=find_all('detalle_movimiento');
 ?>
 
