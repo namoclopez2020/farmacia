@@ -1,0 +1,6 @@
+[27-Jul-2020 18:51:05 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
+[27-Jul-2020 18:51:06 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
+[08-Aug-2020 17:51:03 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
+[08-Aug-2020 17:51:04 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
+[11-Aug-2020 19:00:02 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
+[11-Aug-2020 19:00:07 America/Lima] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home2/jul09mrd/public_html/farmacia/includes/database.php on line 22
