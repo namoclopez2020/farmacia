@@ -50,16 +50,13 @@
 			?>
 			<div class="table-responsive">
 			  <table class="table">
-				<tr  class="info">
+				<tr class="info">
 					<th>#</th>
 					<th>Fecha</th>
-					
 					<th>Vendedor</th>
 					<th>Movimiento</th>
 					<th>Producto</th>
-					<th>Cantidad</th>
-					<th class='text-right'>Acciones</th>
-					
+					<th>Cantidad</th>				
 				</tr>
 				<?php
 				while ($row=$db->fetch_array($query)){
@@ -73,25 +70,20 @@
 					<tr>
 						<td><?php echo $id_movimiento; ?></td>
 						<td><?php echo $fecha; ?></td>
-						
 						<td><?php echo $nombre_usuario; ?></td>
 						<td ><?php echo $nombre_movimiento;?></td>	
 						<td><?php echo $nombre_producto;?></td>
-						<td><?php echo $cantidad;?></td>	
-					<td class="text-right">
-						<a href="eliminar_movimiento.php?id_mov=<?php echo $id_movimiento;?>" class='btn btn-default' title='Eliminar' ><i class="glyphicon glyphicon-edit"></i></a> 
-						
-						
-					</td>
-						
+						<td><?php echo $cantidad;?></td>
 					</tr>
 					<?php
 				}
 				?>
 				<tr>
-					<td colspan=7><span class="pull-right"><?
-					 echo paginate($reload, $page, $total_pages, $adjacents);
-					?></span></td>
+					<td colspan=7>
+						<span class="pull-right">
+							<? echo paginate($reload, $page, $total_pages, $adjacents); ?>
+						</span>
+					</td>
 				</tr>
 			  </table>
 			</div>
