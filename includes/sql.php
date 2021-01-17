@@ -277,17 +277,39 @@ function tableExists($table){
    /* JOIN with categorie  and media database table
    /*--------------------------------------------------------------*/
   function join_product_table(){
-     global $db;
-     $sql  =" SELECT p.id,p.name,p.quantity,p.buy_price,p.sale_price,p.prov,p.media_id,p.date,p.id_sucursal,p.compuesto_prod,p.laboratorio,p.fecha_caducidad,visto,c.name";
-    $sql  .=" AS categorie,m.file_name AS image";
-    $sql  .=" FROM products p";
-    $sql  .=" LEFT JOIN categories c ON c.id = p.categorie_id";
-    $sql  .=" LEFT JOIN media m ON m.id = p.media_id";
-	//$sql  .=" LEFT JOIN sucursales s ON s.id=p.id_sucursales";
-    $sql  .=" ORDER BY p.id ASC";
-    return find_by_sql($sql);
+		global $db;
+		$sql  =" SELECT p.id,p.name,p.quantity,p.buy_price,p.sale_price,p.prov,p.media_id,p.date,p.id_sucursal,p.compuesto_prod,p.laboratorio,p.fecha_caducidad,visto,c.name";
+		$sql  .=" AS categorie,m.file_name AS image";
+		$sql  .=" FROM products p";
+		$sql  .=" LEFT JOIN categories c ON c.id = p.categorie_id";
+		$sql  .=" LEFT JOIN media m ON m.id = p.media_id";
+		//$sql  .=" LEFT JOIN sucursales s ON s.id=p.id_sucursales";
+		$sql  .=" ORDER BY p.id ASC";
+		return find_by_sql($sql);
 
    }
+   function join_product_table_reporte($sucursal = null, $laboratorio = null){
+		global $db;
+		$usuario = current_user();
+
+    $sucursal_sql = find_by_id('sucursales',$sucursal);
+
+    $sql = 'SELECT p.name , p.quantity, p.laboratorio FROM products AS p';
+    if($sucursal != null){
+      $sql .= ' WHERE p.id_sucursal = '.$sucursal.' GROUP BY p.laboratorio';
+    }
+    $sql .= ' ORDER BY p.laboratorio ASC';
+    
+    $productos = find_by_sql($sql);
+
+    $data = [
+      'productos' => $productos,
+      'sucursal' => $sucursal_sql
+    ];
+		
+		return $data;
+
+  }
  function join_product_table_sucursal($sucursal){
      global $db;
      $sql  =" SELECT p.id,p.name,p.quantity,p.buy_price,p.sale_price,p.prov,p.media_id,p.date,p.id_sucursal,p.compuesto_prod,p.laboratorio,p.fecha_caducidad,visto,c.name";
