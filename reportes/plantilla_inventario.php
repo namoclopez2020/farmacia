@@ -145,9 +145,9 @@
  ?> 
   <div style="font-family: Arial, Agency FB, verdana, helvetica, sans-serif;">
     <h1>Reporte de Inventario</h1>
-    <table class="clearfix" id="project" style="width:50%">
+    <table class="clearfix" id="project" style="width:30%">
       <tr>
-          <td><span>Local:</span> Alifarma </td>
+          <td><span>Local:</span> <?php echo $sucursal_info['nombre_sucursal']; ?> </td>
       </tr>
     </table>
     <br>
@@ -156,18 +156,20 @@
       <table style="width:100%;border-top: 1px solid black;border-collapse: collapse;">
         <thead style="font-size: 14px;">
           <tr>
-            <th style="text-align:center;align-content:center;width:50%">Cant</th>
-            <th style="text-align:center;align-content:center;width:50%">Descripción</th>
+            <th style="text-align:center;align-content:center;width:33%">Descripción</th>
+            <th style="text-align:center;align-content:center;width:33%">Laboratorio</th>
+            <th style="text-align:center;align-content:center;width:33%">Cant</th>
           </tr>
         </thead>
         <tbody style="font-size: 12px;">
             
-            <?php foreach($products as $value) { ?>   
+            <?php foreach($products as $value) : ?>   
                 <tr>
-                    <td style="text-align:center;align-content:center;"> <?php echo $value['quantity'];?></td>
-                    <td style="text-align:center;align-content:center;"><?php echo $value['name'];?></td>
+                    <td style="text-align:center;align-content:center;"> <?php echo $value['name'];?></td>
+                    <td style="text-align:center;align-content:center;"> <?php echo $value['laboratorio'];?></td>
+                    <td style="text-align:center;align-content:center;"><?php echo $value['quantity'];?></td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
             
         </tbody>
       </table>

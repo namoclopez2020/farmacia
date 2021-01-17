@@ -9,11 +9,13 @@
     // Instanciamos un objeto de la clase DOMPDF.
     ob_start();
     $pdf = new DOMPDF();
+    $datos = 6;
     $sucursal = ($_GET['suc'] != '') ? $_GET['suc'] : null;
     $laboratorio = ($_GET['lab'] != '') ? $_GET['lab'] : null;
-    $products = join_product_table_reporte($sucursal,$laboratorio);
-    
-    
+    $datos = join_product_table_reporte($sucursal,$laboratorio);
+    $products = $datos['productos'];
+    $sucursal_info = $datos['sucursal'];
+    // return var_dump($datos);
 
     include('reportes/plantilla_inventario.php');
     

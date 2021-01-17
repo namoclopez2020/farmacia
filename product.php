@@ -42,13 +42,13 @@ $page_title = 'PROUCTOS VIGENTES';
 									</select>
 								</div>
 								<div class="col-sm-4 col-md-3 col-lg-3">
-									<select class="form-control" name="laboratorio" id="laboratorio" onChange="load(1)">
+									<!-- <select class="form-control" name="laboratorio" id="laboratorio" onChange="load(1)">
 										<option value="">Selecciona un laboratorio</option>
 										<?php  foreach ($all_sucursales as $suc): ?>
 											<option value="<?php echo $suc['id'] ?>">
 											<?php echo $suc['nombre_sucursal'] ?></option>
 										<?php endforeach; ?>
-									</select>
+									</select> -->
 								</div>
 								<div class="col-sm-2 col-md-2 col-lg-2 pull-right">
 									<a href="javascript:void(0)" class="btn btn-success reporte"><span class="glyphicon glyphicon-print"></span> Reporte</a>

@@ -292,15 +292,22 @@ function tableExists($table){
 		global $db;
 		$usuario = current_user();
 
-    $sql = 'SELECT p.name , p.quantity FROM products AS p';
+    $sucursal_sql = find_by_id('sucursales',$sucursal);
+
+    $sql = 'SELECT p.name , p.quantity, p.laboratorio FROM products AS p';
     if($sucursal != null){
       $sql .= ' WHERE p.id_sucursal = '.$sucursal.' GROUP BY p.laboratorio';
     }
+    $sql .= ' ORDER BY p.laboratorio ASC';
     
-		// // $sql += ' WHERE '
-		// //$sql  .=" LEFT JOIN sucursales s ON s.id=p.id_sucursales";
-		// $sql  .=" ORDER BY p.id ASC";
-		return find_by_sql($sql);
+    $productos = find_by_sql($sql);
+
+    $data = [
+      'productos' => $productos,
+      'sucursal' => $sucursal_sql
+    ];
+		
+		return $data;
 
   }
  function join_product_table_sucursal($sucursal){
