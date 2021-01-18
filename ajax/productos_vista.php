@@ -35,7 +35,7 @@ require_once('../includes/load.php');
 		$row=$db->fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
-		$reload = './index.php';
+		$reload = './product.php';
 		//main query to fetch the data
 		
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";}
@@ -133,9 +133,13 @@ require_once('../includes/load.php');
 				}
 				?>
 				<tr>
-					<td colspan=5><span class="pull-right"><?
-					 echo paginate($reload, $page, $total_pages, $adjacents);
-					?></span></td>
+					<td colspan=12>
+						<span class="pull-right">
+							<?php 
+							echo paginate($reload, $page, $total_pages, $adjacents);
+							?>
+						</span>
+					</td>
 				</tr>
 			  </table>
 			</div>
