@@ -1,11 +1,11 @@
 <?php
 
-  $page_title = 'Lista de boletas';
-  require_once('includes/load.php');
-  // Checkin What level user has permission to view this page
-   page_require_level(3);
-  $all_sucursal=find_all('sucursales');
-  $all_vendedores=find_all('users');
+	$page_title = 'Lista de boletas';
+	require_once('includes/load.php');
+  	// Checkin What level user has permission to view this page
+   	page_require_level(3);
+	$all_sucursal=find_all('sucursales');
+	$all_vendedores=find_all('users');
 ?>
 
 <!DOCTYPE html>
