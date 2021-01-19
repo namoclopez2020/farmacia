@@ -26,7 +26,7 @@ try {
     $html2pdf=new HTML2PDF('P','A4','es','true','UTF-8');
 
     $html2pdf->writeHTML($content);
-    $html2pdf->output('example01.pdf');
+    $html2pdf->output('inventario.pdf');
 } catch (Html2PdfException $e) {
     $html2pdf->clean();
 

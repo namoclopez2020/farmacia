@@ -294,17 +294,35 @@ function tableExists($table){
 
     $sucursal_sql = find_by_id('sucursales',$sucursal);
 
+    
+    $sql_labs = 'SELECT  p.laboratorio FROM products AS p';
     $sql = 'SELECT p.name , p.quantity, p.laboratorio FROM products AS p';
     if($sucursal != null){
-      $sql .= ' WHERE p.id_sucursal = '.$sucursal.' GROUP BY p.laboratorio';
+      $sql .= ' WHERE p.id_sucursal = '.$sucursal.'';
+      $sql_labs .= ' WHERE p.id_sucursal = '.$sucursal.'';
     }
+   
+    $sql_labs .= ' GROUP BY p.laboratorio';
     $sql .= ' ORDER BY p.laboratorio ASC';
     
+    $laboratorios = find_by_sql($sql_labs);
     $productos = find_by_sql($sql);
 
+    foreach($laboratorios as $key => $value){
+       $laboratorios[$key]['productos'] = [];
+    }
+
+    foreach($productos as $value){
+      $key = array_search($value['laboratorio'], array_column($laboratorios,'laboratorio'));
+      if(($key)||($key===0)){
+          array_push($laboratorios[$key]['productos'],$value);
+      }
+    }
+
     $data = [
-      'productos' => $productos,
-      'sucursal' => $sucursal_sql
+      // 'productos' => $productos,
+      'sucursal' => $sucursal_sql,
+      'laboratorios' => $laboratorios
     ];
 		
 		return $data;
