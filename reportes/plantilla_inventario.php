@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Prueba</title>
+    <title>Reporte de inventario</title>
     <style>
         .clearfix:after {
             content: "";
@@ -153,26 +153,32 @@
     <br>
     <br>
       <p style="text-align: center;align-content: center;font-weight: normal;" class="h3">*** Lista de productos ***</p>
-      <table style="width:100%;border-top: 1px solid black;border-collapse: collapse;">
-        <thead style="font-size: 14px;">
-          <tr>
-            <th style="text-align:center;align-content:center;width:33%">Descripción</th>
-            <th style="text-align:center;align-content:center;width:33%">Laboratorio</th>
-            <th style="text-align:center;align-content:center;width:33%">Cant</th>
-          </tr>
-        </thead>
-        <tbody style="font-size: 12px;">
-            
-            <?php foreach($products as $value) : ?>   
+        <?php foreach($laboratorios as $val):?>
+            <h3><?php echo $val['laboratorio'];?></h3>
+            <br>
+            <table style="width:100%;border-top: 1px solid black;border-collapse: collapse;">
+                <thead style="font-size: 14px;">
                 <tr>
-                    <td style="text-align:center;align-content:center;"> <?php echo $value['name'];?></td>
-                    <td style="text-align:center;align-content:center;"> <?php echo $value['laboratorio'];?></td>
-                    <td style="text-align:center;align-content:center;"><?php echo $value['quantity'];?></td>
+                    <th style="text-align:center;align-content:center;width:33%">Descripción</th>
+                    <th style="text-align:center;align-content:center;width:33%">Laboratorio</th>
+                    <th style="text-align:center;align-content:center;width:33%">Cant</th>
                 </tr>
-            <?php endforeach; ?>
-            
-        </tbody>
-      </table>
+                </thead>
+                <tbody style="font-size: 12px;">
+                    <?php if(!empty($val['productos'])) :?>
+                        <?php foreach($val['productos'] as $value) : ?>   
+                            <tr>
+                                <td style="text-align:center;align-content:center;"> <?php echo $value['name'];?></td>
+                                <td style="text-align:center;align-content:center;"> <?php echo $value['laboratorio'];?></td>
+                                <td style="text-align:center;align-content:center;"><?php echo $value['quantity'];?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif;?>
+                    
+                </tbody>
+            </table>
+        <?php endforeach;?>
+      
     <p style="text-align: center;align-content: center;font-weight: normal;">Tecnek Box Reportes</p></div>
 </body>
 </html>

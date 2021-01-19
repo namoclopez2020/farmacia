@@ -13,9 +13,18 @@
     $sucursal = ($_GET['suc'] != '') ? $_GET['suc'] : null;
     $laboratorio = ($_GET['lab'] != '') ? $_GET['lab'] : null;
     $datos = join_product_table_reporte($sucursal,$laboratorio);
-    $products = $datos['productos'];
+    $laboratorios = $datos['laboratorios'];
     $sucursal_info = $datos['sucursal'];
-    // return var_dump($datos);
+    
+
+    // foreach($datos['laboratorios'] as $key => $value){
+    //     if(!empty($value['productos'])){
+    //         foreach($value['productos'] as $clave => $valor){
+    //             echo $valor['name']."<br>";
+    //         }
+    //     }
+    // }
+    // // return var_dump($datos['laboratorios']);
 
     include('reportes/plantilla_inventario.php');
     
