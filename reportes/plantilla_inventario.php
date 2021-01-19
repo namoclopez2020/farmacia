@@ -168,9 +168,9 @@
                     <?php if(!empty($val['productos'])) :?>
                         <?php foreach($val['productos'] as $value) : ?>   
                             <tr>
-                                <td style="text-align:center;align-content:center;"> <?php echo $value['name'];?></td>
-                                <td style="text-align:center;align-content:center;"> <?php echo $value['laboratorio'];?></td>
-                                <td style="text-align:center;align-content:center;"><?php echo $value['quantity'];?></td>
+                                <td style="text-align:left;align-content:left;"> <?php echo $value['name'];?></td>
+                                <td style="text-align:left;align-content:left;"> <?php echo $value['laboratorio'];?></td>
+                                <td style="text-align:left;align-content:left;"><?php echo $value['quantity'];?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif;?>
