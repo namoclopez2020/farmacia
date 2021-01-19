@@ -5,10 +5,11 @@
 	// Checkin What level user has permission to view this page
 	page_require_level(1);
 	$id_producto=$_GET['id'];
-	$query="Select name from products where id='$id_producto'";
+	$query="Select name,quantity from products where id='$id_producto'";
 	$data=$db->query($query);
-	$nombre_prod=$db->fetch_array($data);
-	$nombre_producto=$nombre_prod['name'];
+	$info_prod=$db->fetch_array($data);
+	$nombre_producto=$info_prod['name'];
+	$stock_actual = $info_prod['quantity'];
 	$all_tipo_movimiento=find_all('detalle_movimiento');
 	$all_vendedores=find_all('users');
 ?>
@@ -73,6 +74,14 @@
 							<button type="button" class="btn btn-default pull-right" onclick='load(1);'>
 							<span class="glyphicon glyphicon-search" ></span> Buscar</button>
 							<span id="loader4"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-10 bg-info" style="margin-left:15px">
+							<label class="control-label pull-right">Stock Actual: </label>
+						</div>
+						<div class="col-md-1 bg-success">
+							<label class="control-label pull-left"><?php echo $stock_actual;?></label>	
 						</div>
 					</div>
 					
